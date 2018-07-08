@@ -1,0 +1,28 @@
+
+
+        CameraCaptureUI capturedImage = new CameraCaptureUI();      // using of  " using Windows.Media.Capture; "
+        byte[] user_image;
+        
+        
+        async private void ReplaceImage(object sender, RoutedEventArgs e)
+        {
+            BitmapImage image = new BitmapImage();  // using of " using Windows.UI.Xaml.Media.Imaging; "
+            studentImage.Source = image;
+
+            capturedImage.PhotoSettings.AllowCropping = true;  //if you wan to allow user cropping
+            capturedImage.PhotoSettings.MaxResolution = CameraCaptureUIMaxPhotoResolution.HighestAvailable;
+
+            var result = await capturedImage.CaptureFileAsync(CameraCaptureUIMode.Photo);
+            if (result != null)
+            {
+                var stream = await result.OpenReadAsync();
+                await image.SetSourceAsync(stream);
+
+                // get the image from device camera and store it
+                
+                stream.Seek(0);
+                BinaryReader reader = new BinaryReader(stream.AsStreamForRead());
+                user_image = new byte[stream.Size];
+                reader.Read(user_image, 0, user_image.Length);
+            }
+        }
