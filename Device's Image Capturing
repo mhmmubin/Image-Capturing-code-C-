@@ -4,7 +4,7 @@
         byte[] user_image;
         
         
-        async private void ReplaceImage(object sender, RoutedEventArgs e)
+        async private void NewImage(object sender, RoutedEventArgs e)
         {
             BitmapImage image = new BitmapImage();  // using of " using Windows.UI.Xaml.Media.Imaging; "
             studentImage.Source = image;
