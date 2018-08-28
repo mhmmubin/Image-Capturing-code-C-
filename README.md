@@ -1,5 +1,7 @@
-# Image capturing code: C#
+# Image capturing code: 
 Capture image by using device's camera
+
+## C#
 
 ## prerequisite:
 Visual Studio 12/15/17
